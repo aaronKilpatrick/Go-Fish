@@ -1,4 +1,9 @@
 import re
+from random import randint
+
+##############################
+# Basic Card Functions
+##############################
 
 def build_deck():
     """returns a list containing a standard deck of cards"""
@@ -85,4 +90,59 @@ def same_suit(card_1, *cards):
     return True
 
 
-deck = build_deck()
+##############################
+# Basic Deck Functions
+##############################
+
+def deal_top_card(deck):
+    """
+    Removes and returns top card from deck 
+    Top card is in place 0
+    """
+    return deck.pop(0)
+
+def get_random_card(deck):
+    """Removes and returns a random card from deck"""
+    random_card = randint(0, len(deck)-1)
+    return deck.pop(random_card)
+
+def shuffle_deck(deck):
+    """Shuffles and returns deck"""
+    deck_length = len(deck)
+    counter = 0
+
+    # iterate card shuffle 5000 times
+    while  counter < 5000:
+        counter += 1
+        random_card = get_random_card(deck)
+        insert_position = randint(0, deck_length-1)
+
+        deck.insert(insert_position, random_card)
+    
+    return deck
+
+
+def deal_hands(deck, number_of_hands, hand_size):
+    """
+    Deals out hands
+    removes dealt cards from deck
+    """
+    hands = []
+    
+    while number_of_hands > 0:
+        current_hand = []
+        card_count = 0
+
+        while card_count < hand_size:
+            card = deal_top_card(deck)
+            current_hand.append(card)
+            
+            card_count += 1
+
+        hands.append(current_hand)
+        number_of_hands -= 1
+        
+    return hands
+
+
+
