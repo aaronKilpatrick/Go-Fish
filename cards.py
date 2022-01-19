@@ -144,5 +144,23 @@ def deal_hands(deck, number_of_hands, hand_size):
         
     return hands
 
+# GROSS Revisit this - Terrible, hacky code
+def pairs_in_hand(hand):
+    """Checks to see if hand has any pairs"""
+    for index in range(0, len(hand)+1):
+        current_card = hand.pop(index)
+        pair_found = False
 
+        # Check if card matches the popped current_card
+        for card in hand:
+            if same_value(current_card, card):
+                hand.remove(card)
+                pair_found = True
+                break
+        
+        # replace unpaired card into hand
+        if not pair_found:
+            hand.insert(index, current_card)
 
+        if index >= len(hand)-1:
+            break
