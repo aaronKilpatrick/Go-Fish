@@ -49,6 +49,17 @@ class TestPlayerClass(unittest.TestCase):
         message = "check_for_requested_card() - Fail"
         self.assertFalse(test_function, message)
 
+    def test_increment_score_default(self):
+        """Test if score increments by 1"""
+
+        self.player.increment_score()
+        self.assertEqual(self.player.score, 1)
+
+    def test_increment_score_attribute_2(self):
+        """Test if score increments by 1"""
+        self.player.increment_score(2)
+        self.assertEqual(self.player.score, 2)
+
 
 if __name__ == '__main__':
     unittest.main()
