@@ -170,13 +170,13 @@ def turn(player, bot):
     else:
         print("Go fish")
 
-deck = Deck()
-deck.build_deck()
-deck.shuffle_deck()
+# deck = Deck()
+# deck.build_deck()
+# deck.shuffle_deck()
 
-player = Player(deck.deal_hand())
-bot = Player(deck.deal_hand())
+# player = Player(deck.deal_hand())
+# bot = Player(deck.deal_hand())
 
-turn(player, bot)
+# turn(player, bot)
 
 
